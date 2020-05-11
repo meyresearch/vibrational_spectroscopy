@@ -49,7 +49,7 @@ def data_input():
     )
 
     form_items = [
-        Box([Label(value='Vibrational Transition wave numbers G'),
+        Box([Label(value=r'Vibrational intervals  $\Delta$ G in cm^${-1}$'),
              Textarea()], layout=form_item_layout),
         Box([Label(value='vibrational quantum numbers v+0.5'),
              Textarea()], layout=form_item_layout)
