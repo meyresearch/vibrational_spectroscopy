@@ -1,4 +1,8 @@
 
+__author__ = "Antonia Mey"
+__email_ = "antonia.mey@ed.ac.uk"
+
+
 import matplotlib.pyplot as plt
 from scipy.stats import linregress
 import scipy.constants as con
@@ -35,13 +39,22 @@ def _extract_data(transition_wave_number, vib_quantum_number):
     return v,G
 
 def _fit(v,G):
+    r'Liner regresion fit of data points extrapolating to cross x and y axis at 0.'
+
+    # Fit data
     fit = linregress(v, G)
+    # find maximum x
     x_max = -fit[1]/fit[0]
+
+    # create new extrapolated data point array
     new_v = np.linspace(0,x_max, 20)
     new_G = fit[0]*new_v+fit[1]
+
+    #return all relevant data points
     return new_v, new_G, x_max
 
 def data_input():
+    r'Widget to interact with for data'
     form_item_layout = Layout(
         display='flex',
         flex_flow='row',
@@ -73,6 +86,7 @@ def plot_birge_sponer(form = None, transition_wave_number=None, vib_quantum_numb
             vib_quantum_number = form.children[1].children[1].value
     v,G = _extract_data(transition_wave_number, vib_quantum_number)
 
+    # Basic plot with labels
     plt.plot(v,G, marker='o')
     plt.xlabel(r'v+$\frac{1}{2}$')
     plt.ylabel(r'$\tilde{\nu}\,[cm^{-1}]$')
@@ -89,6 +103,7 @@ def plot_extrapolated_birge_sponer(form = None, transition_wave_number=None, vib
 
     new_v, new_G, x_max = _fit(v,G)
 
+    # Basic plot with lables that also plots the fit
     plt.plot(v,G, marker='o')
     plt.plot(new_v,new_G,'--')
     plt.xlim(0,x_max)
@@ -108,17 +123,19 @@ def compute_area_under_graph(form = None, transition_wave_number=None, vib_quant
 
     new_v, new_G, x_max = _fit(v,G)
 
+    # Compute the area under the curve
     a = 0.5*x_max*max(new_G)
     Area = r'Area = $\frac{1}{2}$vG = %.2f cm$^{-1}$' %(a)
     pos_x = 0.8*x_max
     pos_y = 0.8*max(new_G)
 
+    # Plot with shaded area and computed size of area
     plt.plot(v,G, marker='o')
     plt.plot(new_v,new_G,'--', color = 'orange')
     plt.fill_between(new_v, new_G, alpha=0.2, color = 'orange')
     plt.xlim(0,x_max)
     plt.ylim(0,max(new_G))
-    plt.text(pos_x,pos_y,Area, bbox=dict(edgecolor='black', alpha=0.5), fontsize=15)
+    plt.text(pos_x,pos_y,Area, bbox=dict(edgecolor='black', alpha=0.1), fontsize=15)
     plt.xlabel(r'v+$\frac{1}{2}$')
     plt.ylabel(r'$\tilde{\nu}\,[cm^{-1}]$')
     sbn.despine()
