@@ -28,4 +28,5 @@ jupyter notebook
 ```
 
 ## Issues
-If you find any issues or errors, please raise and issue, or contact 
+If you find any issues or errors, please raise and issue, or contact me by email:   
+antonia.mey@ed.ac.uk

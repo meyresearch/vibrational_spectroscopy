@@ -64,7 +64,7 @@ def data_input():
     form_items = [
         Box([Label(value=r'Vibrational intervals  $\Delta$ G in cm$^{-1}$'),
              Textarea()], layout=form_item_layout),
-        Box([Label(value='vibrational quantum numbers v+0.5'),
+        Box([Label(value='Vibrational quantum numbers v+1/2'),
              Textarea()], layout=form_item_layout)
     ]
 
@@ -140,7 +140,7 @@ def compute_area_under_graph(form = None, transition_wave_number=None, vib_quant
     plt.ylabel(r'$\tilde{\nu}\,[cm^{-1}]$')
     sbn.despine()
 
-def compute_disosication_energy(form = None, transition_wave_number=None, vib_quantum_number=None, ):
+def compute_dissociation_energy(form = None, transition_wave_number=None, vib_quantum_number=None, ):
 
     if transition_wave_number is None or vib_quantum_number is None:
         if form is None:
