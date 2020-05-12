@@ -89,7 +89,7 @@ def plot_birge_sponer(form = None, transition_wave_number=None, vib_quantum_numb
     # Basic plot with labels
     plt.plot(v,G, marker='o')
     plt.xlabel(r'v+$\frac{1}{2}$')
-    plt.ylabel(r'$\tilde{\nu}\,[cm^{-1}]$')
+    plt.ylabel(r'$\Delta G(v+1/2)\,[cm^{-1}]$')
     sbn.despine()
 
 def plot_extrapolated_birge_sponer(form = None, transition_wave_number=None, vib_quantum_number=None, shaded = True):
@@ -109,7 +109,7 @@ def plot_extrapolated_birge_sponer(form = None, transition_wave_number=None, vib
     plt.xlim(0,x_max)
     plt.ylim(0,max(new_G))
     plt.xlabel(r'v+$\frac{1}{2}$')
-    plt.ylabel(r'$\tilde{\nu}\,[cm^{-1}]$')
+    plt.ylabel(r'$\Delta G(v+1/2)\,[cm^{-1}]$')
     sbn.despine()
 
 def compute_area_under_graph(form = None, transition_wave_number=None, vib_quantum_number=None, shaded = True):
@@ -137,7 +137,7 @@ def compute_area_under_graph(form = None, transition_wave_number=None, vib_quant
     plt.ylim(0,max(new_G))
     plt.text(pos_x,pos_y,Area, bbox=dict(edgecolor='black', alpha=0.1), fontsize=15)
     plt.xlabel(r'v+$\frac{1}{2}$')
-    plt.ylabel(r'$\tilde{\nu}\,[cm^{-1}]$')
+    plt.ylabel(r'$\Delta G(v+1/2)\,[cm^{-1}]$')
     sbn.despine()
 
 def compute_dissociation_energy(form = None, transition_wave_number=None, vib_quantum_number=None, ):
